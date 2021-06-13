@@ -23,20 +23,20 @@ void	ft_recount_width(t_item *item)
 		}
 		else if (tp == 's')
 		{
-			if (item->dot && (size_t)item->precision < ft_strlen(item->string))
+			if (item->dot && (size_t)item->precision < item->size)
 				item->width -= item->precision;
 			else
-				item->width -= ft_strlen(item->string);
+				item->width -= item->size;
 		}
 		else if (ft_isnum(tp))
 		{
-			item->width -= (item->precision + item->numsize);
+			item->width -= (item->precision + item->size);
 			if (item->sign == -1)
 				item->width--;
 		}
 		else if (tp == 'p')
 		{
-			item->width -= (item->precision + item->numsize + 2);
+			item->width -= (item->precision + item->size + 2);
 			item->length += 2; // 0x
 		}
 		check_item(item);
@@ -48,14 +48,9 @@ void	ft_recount_precision(t_item *item)
 	int	tp;
 
 	tp = item->type;
-	if (tp == 's')
+	if (item->dot && ft_isnum(tp))
 	{
-		if (!item->string)
-			item->string = "(null)";
-	}
-	else if (item->dot && ft_isnum(tp))
-	{
-		item->precision -= item->numsize;
+		item->precision -= item->size;
 		item->zero = 0;
 	}
 	check_item(item);

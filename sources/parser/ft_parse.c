@@ -17,7 +17,7 @@ static t_item	create_struct(void)
 	item.un_num = 0;
 	item.pointer = 0;
 	item.string = NULL;
-	item.numsize = 0;
+	item.size = 0;
 	return (item);
 }
 

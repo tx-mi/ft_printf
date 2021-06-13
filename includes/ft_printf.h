@@ -24,7 +24,7 @@ typedef struct s_item
 	unsigned long int	pointer;
 	char				*string;
 
-	size_t				numsize;
+	size_t				size;
 }						t_item;
 
 int		ft_printf(const char *format, ...);

@@ -46,7 +46,6 @@ void	ft_print_decnum(t_item *item)
 	size_t	num;
 
 	num = item->num;
-	item->length += item->numsize;
 	if (item->type == 'u')
 		num = item->un_num;
 	if (item->zero && item->width)
