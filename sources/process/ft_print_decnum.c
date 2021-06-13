@@ -48,6 +48,11 @@ void	ft_print_decnum(t_item *item)
 	num = item->num;
 	if (item->type == 'u')
 		num = item->un_num;
+	if (item->zero && item->width)
+	{
+		item->precision = item->width;
+		item->width = 0;
+	}
 	if (!item->minus)
 		display_width(item);
 	if (item->sign == -1)
