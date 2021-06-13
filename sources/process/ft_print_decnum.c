@@ -46,6 +46,7 @@ void	ft_print_decnum(t_item *item)
 	size_t	num;
 
 	num = item->num;
+	item->length += item->numsize;
 	if (item->type == 'u')
 		num = item->un_num;
 	if (item->zero && item->width)
@@ -62,7 +63,6 @@ void	ft_print_decnum(t_item *item)
 		ft_putnbr_recursive(num);
 	else if (item->width)
 		write(1, " ", 1);
-	item->length += item->numsize;
 	if (item->minus)
 		display_width(item);
 }
