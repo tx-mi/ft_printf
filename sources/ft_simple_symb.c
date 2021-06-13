@@ -1,4 +1,3 @@
-
 #include "../includes/ft_printf.h"
 
 void	ft_simple_symb(char **format_str, int *count_symb)

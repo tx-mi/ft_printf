@@ -68,9 +68,9 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-				
+
 // My functions
 int					ft_pow_recursive(int basis, int exponent);
 void				ft_putnbr_recursive(size_t num);
-size_t				ft_count_numsize(size_t num);
+size_t				ft_count_numsize(size_t num, int base);
 #endif

@@ -1,19 +1,16 @@
 #include "../../includes/ft_printf.h"
 
-void	ft_parse_flags(f_datum *datum, char **str)
+void	ft_parse_flags(t_item *item, char **format_str)
 {
-	while (**str == '-' || **str == '0')
+	while (**format_str == '-' || **format_str == '0')
 	{
-		if (**str == '-' && (*datum).minus != 1)
+		if (**format_str == '-' && !item->minus)
 		{
-			(*datum).minus = 1;
-			(*datum).zero = 0;
+			item->minus = 1;
+			item->zero = 0;
 		}
-		else if (**str == '0' && (*datum).minus != 1)
-		{
-			(*datum).minus = 0;
-			(*datum).zero = 1;
-		}
-		(*str)++;
+		else if (**format_str == '0' && !item->minus && !item->zero)
+			item->zero = 1;
+		(*format_str)++;
 	}
 }
