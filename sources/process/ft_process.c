@@ -8,8 +8,8 @@ void	ft_print(t_item *item)
 		ft_print_str(item);
 	else if (item->type == 'd' || item->type == 'i' || item->type == 'u')
 		ft_print_decnum(item);
-	// else if (item->type == 'x' || item->type == "X" || item->type == "p")
-	// 	ft_print_hexnum(item);
+	else
+		ft_print_hexnum(item);
 }
 
 int	ft_process(t_item *item)

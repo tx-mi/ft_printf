@@ -2,12 +2,8 @@
 
 static void	print_num(size_t num)
 {
-	(void)num;
-}
-
-static void	display_width(t_item *item)
-{
-	(void)item;
+	// convert to 16base num
+	ft_putnbr_recursive(num);
 }
 
 void	ft_print_hexnum(t_item *item)
@@ -17,14 +13,10 @@ void	ft_print_hexnum(t_item *item)
 
 	num = item->un_num;
 	tp = item->type;
-	if (item->type != 'p' && !item->minus)
-		display_width(item);
 	if (tp == 'p')
 	{
 		ft_putstr_fd("0x", 1);
 		num = item->pointer;
 	}
 	print_num(num);
-	if (item->type != 'p')
-		display_width(item);
 }
