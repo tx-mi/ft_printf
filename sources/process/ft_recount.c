@@ -28,16 +28,16 @@ void	ft_recount_width(t_item *item)
 			else
 				item->width -= item->size;
 		}
-		else if (ft_isnum(tp))
+		else if (ft_isnum(tp) || tp == 'p')
 		{
 			item->width -= (item->precision + item->size);
 			if (item->sign == -1)
 				item->width--;
-		}
-		else if (tp == 'p')
-		{
-			item->width -= (item->precision + item->size + 2);
-			item->length += 2; // 0x
+			if (item->zero && item->width && tp != 'p')
+			{
+				item->precision = item->width;
+				item->width = 0;
+			}
 		}
 		check_item(item);
 	}

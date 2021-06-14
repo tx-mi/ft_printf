@@ -7,28 +7,6 @@ static int	stupid(t_item *item, size_t num)
 	return (0);
 }
 
-static void	put_minus(t_item *item)
-{
-	write(1, "-", 1);
-	item->length++;
-}
-
-static void	display_width(t_item *item)
-{
-	int	sep;
-	int	width;
-
-	sep = ' ';
-	width = item->width;
-	if (item->zero && !item->dot)
-		sep = '0';
-	while (width-- > 0)
-	{
-		write(1, &sep, 1);
-		item->length++;
-	}
-}
-
 static void	display_precision(t_item *item)
 {
 	int	precision;
@@ -48,20 +26,11 @@ void	ft_print_decnum(t_item *item)
 	num = item->num;
 	if (item->type == 'u')
 		num = item->un_num;
-	if (item->zero && item->width)
-	{
-		item->precision = item->width;
-		item->width = 0;
-	}
-	if (!item->minus)
-		display_width(item);
 	if (item->sign == -1)
-		put_minus(item);
+		write(1, "-", 1);
 	display_precision(item);
 	if (!stupid(item, num))
 		ft_putnbr_recursive(num);
 	else if (item->width)
 		write(1, " ", 1);
-	if (item->minus)
-		display_width(item);
 }

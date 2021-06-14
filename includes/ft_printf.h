@@ -51,4 +51,5 @@ void	ft_print_hexnum(t_item *item);
 
 // Utils
 int		ft_isnum(int type);
+void	ft_print_width(t_item *item);
 #endif

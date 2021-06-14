@@ -9,23 +9,6 @@ static int	in_specifier(char c)
 	return (0);
 }
 
-static void	add_decimalnum(t_item *item, va_list *ap)
-{
-	long long int	num;
-
-	num = va_arg(*ap, int);
-	if (num < 0)
-	{
-		item->sign = -1;
-		num = -num;
-	}
-	else
-		item->sign = 1;
-	item->num = num;
-	item->size = ft_count_numsize(num, 10);
-	item->length = item->size;
-}
-
 static void	add_string(t_item *item, va_list *ap)
 {
 	char	*string;
@@ -37,6 +20,24 @@ static void	add_string(t_item *item, va_list *ap)
 	item->size = ft_strlen(string);
 }
 
+static void	add_decimalnum(t_item *item, va_list *ap)
+{
+	long long int	num;
+
+	num = va_arg(*ap, int);
+	if (num < 0)
+	{
+		item->sign = -1;
+		item->length++;
+		num = -num;
+	}
+	else
+		item->sign = 1;
+	item->num = num;
+	item->size = ft_count_numsize(num, 10);
+	item->length += item->size;
+}
+
 static void	add_un_num(t_item *item, va_list *ap, char c)
 {
 	item->un_num = va_arg(*ap, unsigned int);
@@ -44,6 +45,7 @@ static void	add_un_num(t_item *item, va_list *ap, char c)
 		item->size = ft_count_numsize(item->un_num, 10);
 	else
 		item->size = ft_count_numsize(item->un_num, 16);
+	item->length = item->size;
 }
 
 void	ft_parse_type(t_item *item, char **format_str, va_list *ap)
@@ -67,7 +69,8 @@ void	ft_parse_type(t_item *item, char **format_str, va_list *ap)
 		else if (c == 'p')
 		{
 			item->pointer = va_arg(*ap, unsigned long int);
-			item->size = ft_count_numsize(item->un_num, 16);
+			item->size = ft_count_numsize(item->un_num, 16) + 2;
+			item->length = item->size;
 		}
 		item->type = c;
 		(*format_str)++;
