@@ -1,4 +1,4 @@
-#include "../includes/libft.h"
+#include "libft.h"
 
 static char	**ft_malloc_error(char **array)
 {

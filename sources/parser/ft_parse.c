@@ -1,4 +1,4 @@
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static t_item	create_struct(void)
 {
@@ -6,6 +6,7 @@ static t_item	create_struct(void)
 
 	item.zero = 0;
 	item.minus = 0;
+	item.def_w = 0;
 	item.width = 0;
 	item.dot = 0;
 	item.precision = 0;
@@ -18,6 +19,7 @@ static t_item	create_struct(void)
 	item.pointer = 0;
 	item.string = NULL;
 	item.size = 0;
+	item.stupid = 0;
 	return (item);
 }
 

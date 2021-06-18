@@ -1,5 +1,6 @@
 NAME = libft.a
 HEADER = ../includes/libft.h
+HEADER_INC = -I../includes/
 SRC = 	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 		ft_memmove.c ft_memchr.c ft_memcmp.c \
 		ft_strlen.c ft_strlcpy.c  ft_strlcat.c ft_strchr.c \
@@ -21,12 +22,12 @@ BONUS_SRC =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 OBJS = $(patsubst %.c, %.o, $(SRC))
 OBJS_B  = $(patsubst %.c, %.o, $(BONUS_SRC))
 CC	= gcc
-CFLAGS = -Wall -Wextra -Werror -c -I
+CFLAGS = -Wall -Wextra -Werror -c
 LIBC = ar rcs
 RM = rm -rf
 
-%.o : %.c 
-	$(CC) $(CFLAGS) $(HEADER) $< -o $@
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) $(HEADER_INC) $< -o $@
 
 all: $(NAME) 
 

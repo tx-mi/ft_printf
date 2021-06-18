@@ -3,7 +3,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <limits.h>
 # include "libft.h"
 
@@ -11,6 +10,7 @@ typedef struct s_item
 {
 	int					zero;
 	int					minus;
+	int					def_w;
 	int					width;
 	int					dot;
 	int					precision;
@@ -25,6 +25,7 @@ typedef struct s_item
 	char				*string;
 
 	size_t				size;
+	int					stupid;
 }						t_item;
 
 int		ft_printf(const char *format, ...);
@@ -46,10 +47,11 @@ void	ft_print(t_item *item);
 
 void	ft_print_chr(t_item *item);
 void	ft_print_str(t_item *item);
-void	ft_print_decnum(t_item *item);
-void	ft_print_hexnum(t_item *item);
+void	ft_print_num(t_item *item);
 
 // Utils
 int		ft_isnum(int type);
+int		in_specifier(char c);
 void	ft_print_width(t_item *item);
+void	ft_put_hexnum(size_t num, char *hexset);
 #endif

@@ -1,4 +1,4 @@
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_parse_flags(t_item *item, char **format_str)
 {

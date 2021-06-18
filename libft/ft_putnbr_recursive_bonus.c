@@ -1,8 +1,8 @@
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	ft_putnbr_recursive(size_t num)
 {
-	size_t number;
+	size_t	number;
 
 	number = '0';
 	if (num / 10 == 0)

@@ -1,4 +1,4 @@
-#include "../includes/libft.h"
+#include "libft.h"
 
 static void	ft_count_boders(char const *s1, char const *set,
 							size_t *start, size_t *end)
