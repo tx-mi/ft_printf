@@ -12,9 +12,6 @@ static void	check_for_negative(t_item *item)
 
 void	ft_parse_width(t_item *item, char **format_str, va_list *ap)
 {
-	int	width;
-
-	width = 0;
 	if (**format_str == '*')
 	{
 		item->width = va_arg(*ap, int);
@@ -29,9 +26,4 @@ void	ft_parse_width(t_item *item, char **format_str, va_list *ap)
 	}	
 	if (item->width)
 		item->def_w = 1;
-	while (width)
-	{
-		(*format_str)++;
-		width /= 10;
-	}
 }
